@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/coordinator"
+    tools:context=".ui.activity.DetailUsersActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?android:colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/detail_top_appbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?actionBarSize"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:navigationIcon="@drawable/ic_back"
+                    app:title="@string/username"
+                    app:menu="@menu/menu_share"
+                    app:titleTextAppearance="@style/Text.UsernameTitle"
+                    app:titleTextColor="@color/white" />
+
+                <include
+                    android:id="@+id/ic_detail"
+                    layout="@layout/view_detail_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_top_appbar" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_photo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="15dp"
+                    android:contentDescription="@string/desc_user_image"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detail_top_appbar"
+                    tools:ignore="ImageContrastCheck,ImageContrastCheck"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    style="@style/Text.Content.Small"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingEnd="30dp"
+                    android:textColor="#FFF"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/iv_photo"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_photo"
+                    tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck"
+                    tools:text="@string/name" />
+
+                <TextView
+                    android:id="@+id/tv_company"
+                    style="@style/Text.SubContent.Small"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingEnd="30dp"
+                    android:textColor="#FFF"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/iv_photo"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                    tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck"
+                    tools:text="@string/company" />
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    style="@style/Text.SubContent.Small"
+                    android:layout_marginStart="2dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingEnd="30dp"
+                    android:textColor="#FFF"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="@+id/iv_photo"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_company"
+                    tools:ignore="RtlSymmetry,TextContrastCheck,TextContrastCheck"
+                    tools:text="@string/location" />
+
+                <TextView
+                    android:id="@+id/tv_followers_label"
+                    style="@style/Text.SubContent.Small"
+                    android:layout_width="70dp"
+                    android:gravity="center"
+                    android:text="@string/followers"
+                    android:textColor="#FFF"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_following_label"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@id/iv_photo"
+                    app:layout_constraintTop_toTopOf="@+id/iv_photo"
+                    app:layout_constraintVertical_bias="0.494"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/tv_following_label"
+                    style="@style/Text.SubContent.Small"
+                    android:layout_width="70dp"
+                    android:gravity="center"
+                    android:text="@string/following"
+                    android:textColor="#FFF"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_repository_label"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_followers_label"
+                    app:layout_constraintTop_toTopOf="@+id/tv_followers_label"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/tv_repository_label"
+                    style="@style/Text.SubContent.Small"
+                    android:layout_width="70dp"
+                    android:gravity="center"
+                    android:text="@string/repository"
+                    android:textColor="#FFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_following_label"
+                    app:layout_constraintTop_toTopOf="@+id/tv_followers_label"
+                    tools:ignore="TextContrastCheck,TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/tv_followers_number"
+                    style="@style/Text.Content.Big"
+                    android:textColor="#FFF"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_followers_label"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_followers_label"
+                    app:layout_constraintStart_toStartOf="@+id/tv_followers_label"
+                    tools:ignore="TextContrastCheck,TextContrastCheck"
+                    tools:text="@string/followers_number" />
+
+                <TextView
+                    android:id="@+id/tv_following_number"
+                    style="@style/Text.Content.Big"
+                    android:textColor="#FFF"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_following_label"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_following_label"
+                    app:layout_constraintStart_toStartOf="@+id/tv_following_label"
+                    tools:ignore="TextContrastCheck,TextContrastCheck"
+                    tools:text="@string/following_number" />
+
+                <TextView
+                    android:id="@+id/tv_repository_number"
+                    style="@style/Text.Content.Big"
+                    android:textColor="#FFF"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_repository_label"
+                    app:layout_constraintEnd_toEndOf="@+id/tv_repository_label"
+                    app:layout_constraintStart_toStartOf="@+id/tv_repository_label"
+                    tools:ignore="TextContrastCheck,TextContrastCheck"
+                    tools:text="@string/repository_number" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:colorPrimary"
+            app:tabIndicatorColor="@color/white"
+            app:tabIndicatorHeight="4dp"
+            app:tabTextAppearance="@style/Text.Content.Small"
+            app:tabTextColor="@color/white"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/desc_favorite_button"
+        android:foregroundGravity="bottom"
+        app:fabSize="normal"
+        app:layout_anchor="@id/view_pager"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_favourite"
+        tools:ignore="RedundantDescriptionCheck,RedundantDescriptionCheck,ImageContrastCheck,ImageContrastCheck"
+        tools:layout_editor_absoluteX="341dp"
+        tools:layout_editor_absoluteY="190dp" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
